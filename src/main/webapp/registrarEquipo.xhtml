@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:shiro="http://shiro.apache.org/tags"
+      lang="es">
+
+<h:head>
+    <title>Registro de Equipos</title>
+    <style>
+        body{
+            background: rgb(100, 100, 100);
+            color: black;
+            font: bold 125% monospace;
+        }
+        .column {
+            float: left;
+            width: 33.33%;
+        }
+        .boton{
+            text-decoration: none;
+            padding: 0px;
+            font-weight: 600;
+            font-size: 20px;
+            color: #ffffff;
+            background-color: #1883ba;
+            border-radius: 0px;
+            border: 2px solid #0016b0;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <br/>
+    <h:form id="registroEquipo">
+        <a class="boton" href="elemento.xhtml">
+            Atrás
+        </a>
+        <center>
+            <h1>Registrar un Elemento</h1>
+            <div class="row">
+                <div class="column">
+                    <h2>Tipo</h2>
+                    <p:selectOneMenu id="Tipo" name="Tipo" binding="#{tipo}" style="width:187px">
+                        <f:selectItem itemLabel="-"/>
+                        <f:selectItem itemLabel="Torre" itemValue="torre"/>
+                        <f:selectItem itemLabel="Mouse" itemValue="mouse"/>
+                        <f:selectItem itemLabel="Teclado" itemValue="teclado"/>
+                        <f:selectItem itemLabel="Pantalla" itemValue="pantalla"/>
+                    </p:selectOneMenu>
+                </div>
+                <div class="column">
+                    <h2>Marca</h2>
+                    <p:inputText name="Marca" binding="#{marca}"></p:inputText>
+                </div>
+                <div class="column">
+                    <h2>Referencia</h2>
+                    <p:inputText name="Referencia" binding="#{ref}"></p:inputText>
+                </div>
+            </div>
+            <br/><br/><br/><br/><br/><br/><br/>
+            <p:commandButton class="boton" update="registroElemento" actionListener="#{Elemento.agregarElemento(tipo.value,marca.value,ref.value)}" value="Ingresar"></p:commandButton>
+            <br/><br/><br/>
+            <p:dataTable id="tabla" value="#{Elemento.elementos}" var="elm" rows="100" style="width:1300px;" scrollable="true" scrollHeight="400" sortBy="#{elm.tipo}"
+                         expandableRowGroups="true">
+                <f:facet name="header">
+                    ELEMENTOS REGISTRADOS
+                </f:facet>
+                <p:headerRow>
+                    <p:column colspan="6">
+                        <h:outputText value="#{elm.tipo}" />
+                    </p:column>
+                </p:headerRow>
+                <p:column headerText="Numero Serial">
+                    <center><p:outputLabel value="#{elm.numeroSerial}"/></center>
+                </p:column>
+                <p:column headerText="Tipo">
+                    <center><p:outputLabel value="#{elm.tipo}"/></center>
+                </p:column>
+                <p:column headerText="Marca">
+                    <center><p:outputLabel value="#{elm.marca}"/></center>
+                </p:column>
+                <p:column headerText="Referencia">
+                    <center><p:outputLabel value="#{elm.referencia}"/></center>
+                </p:column>
+                <p:column headerText="Disponible">
+                    <center><p:outputLabel value="#{elm.disponible}"/></center>
+                </p:column>
+                <p:column headerText="Equipo Asociado">
+                    <center><p:outputLabel value="#{elm.equipoAsociado}"/></center>
+                </p:column>
+            </p:dataTable>
+            <br/>
+        </center>
+    </h:form>
+</h:body>
+</html>

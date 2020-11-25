@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:shiro="http://shiro.apache.org/tags"
+      lang="es">
+
+<h:head>
+    <title>Consulta de elementos</title>
+    <style>
+        body{
+            background: rgb(1000, 1000, 1000);
+            color: black;
+            font: bold 125% monospace;
+        }
+        .column {
+            float: left;
+            width: 33.33%;
+        }
+        .boton{
+            text-decoration: none;
+            padding: 0px;
+            font-weight: 600;
+            font-size: 20px;
+            color: #ffffff;
+            background-color: #1883ba;
+            border-radius: 0px;
+            border: 2px solid #0016b0;
+        }
+        .texto{
+            text-decoration: none;
+            padding: 6px;
+            font-weight: 600;
+            font-size: 20px;
+            color: #1883ba;
+            background-color: #ffffff;
+            border-radius: 0px;
+            border: 2px solid #0016b0;
+        }
+
+        .hola{
+            margin: 20px 150px 20px 300px;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <br/>
+    <h:form id="registroElemento">
+            <div class="hola">
+                <h2>Elementos de un Equipo</h2>
+                <div class="row">
+                    <p:inputText class="texto" binding="#{equipo}"></p:inputText>
+                    <p:commandButton class="boton" update="tabla" actionListener="#{Elemento.consultarElementosEquipo(equipo.value)}" value="Ingresar"></p:commandButton>
+                </div>
+            </div>
+
+            <br/>
+            <center>
+                <p:dataTable id="tabla" value="#{Elemento.elementos2}" var="elm" rows="100" style="width:1300px;">
+                    <f:facet name="header">ELEMENTOS DEL EQUIPO </f:facet>
+                    <p:headerRow>
+                        <p:column colspan="6">
+                            <h:outputText value="#{elm.tipo}" />
+                        </p:column>
+                    </p:headerRow>
+                    <p:column headerText="Numero Serial">
+                        <center><p:outputLabel value="#{elm.numeroSerial}"/></center>
+                    </p:column>
+                    <p:column headerText="Tipo">
+                        <center><p:outputLabel value="#{elm.tipo}"/></center>
+                    </p:column>
+                    <p:column headerText="Marca">
+                        <center><p:outputLabel value="#{elm.marca}"/></center>
+                    </p:column>
+                    <p:column headerText="Referencia">
+                        <center><p:outputLabel value="#{elm.referencia}"/></center>
+                    </p:column>
+                    <p:column headerText="Disponible">
+                        <center><p:outputLabel value="#{elm.disponible}"/></center>
+                    </p:column>
+                    <p:column headerText="Equipo Asociado">
+                        <center><p:outputLabel value="#{elm.equipoAsociado}"/></center>
+                    </p:column>
+                </p:dataTable>
+            </center>
+
+            <br/><br/>
+            <div class="hola">
+                <h2>Buscar Elemento</h2>
+                <div class="row">
+                    <p:inputText class="texto" binding="#{numero}"></p:inputText>
+                    <p:commandButton class="boton" update="tabla1" actionListener="#{Elemento.consultarElemento(numero.value)}" value="Ingresar"></p:commandButton>
+                </div>
+            </div>
+
+            <br/>
+            <center>
+                <p:dataTable id="tabla1" value="#{Elemento.elemento}" var="elm" rows="100" style="width:1300px;">
+                    <f:facet name="header">ELEMENTO</f:facet>
+                    <p:headerRow>
+                        <p:column colspan="6">
+                            <h:outputText value="#{elm.tipo}" />
+                        </p:column>
+                    </p:headerRow>
+                    <p:column headerText="Numero Serial">
+                        <center><p:outputLabel value="#{elm.numeroSerial}"/></center>
+                    </p:column>
+                    <p:column headerText="Tipo">
+                        <center><p:outputLabel value="#{elm.tipo}"/></center>
+                    </p:column>
+                    <p:column headerText="Marca">
+                        <center><p:outputLabel value="#{elm.marca}"/></center>
+                    </p:column>
+                    <p:column headerText="Referencia">
+                        <center><p:outputLabel value="#{elm.referencia}"/></center>
+                    </p:column>
+                    <p:column headerText="Disponible">
+                        <center><p:outputLabel value="#{elm.disponible}"/></center>
+                    </p:column>
+                    <p:column headerText="Equipo Asociado">
+                        <center><p:outputLabel value="#{elm.equipoAsociado}"/></center>
+                    </p:column>
+                </p:dataTable>
+            </center>
+
+            <br/><br/>
+            <div class="hola">
+                <h2>Todos los Elementos</h2>
+            </div>
+            <center>
+                <p:dataTable id="tabla2" value="#{Elemento.elementos}" var="elm" rows="100" style="width:1300px;">
+                    <f:facet name="header">TODOS LOS ELEMENTOS</f:facet>
+                    <p:headerRow>
+                        <p:column colspan="6">
+                            <h:outputText value="#{elm.tipo}" />
+                        </p:column>
+                    </p:headerRow>
+                    <p:column headerText="Numero Serial">
+                        <center><p:outputLabel value="#{elm.numeroSerial}"/></center>
+                    </p:column>
+                    <p:column headerText="Tipo">
+                        <center><p:outputLabel value="#{elm.tipo}"/></center>
+                    </p:column>
+                    <p:column headerText="Marca">
+                        <center><p:outputLabel value="#{elm.marca}"/></center>
+                    </p:column>
+                    <p:column headerText="Referencia">
+                        <center><p:outputLabel value="#{elm.referencia}"/></center>
+                    </p:column>
+                    <p:column headerText="Disponible">
+                        <center><p:outputLabel value="#{elm.disponible}"/></center>
+                    </p:column>
+                    <p:column headerText="Equipo Asociado">
+                        <center><p:outputLabel value="#{elm.equipoAsociado}"/></center>
+                    </p:column>
+                </p:dataTable>
+            </center>
+    </h:form>
+</h:body>
+</html>
