@@ -42,7 +42,3 @@ $ mvn javadoc:javadoc
   - [Maven](https://maven.apache.org/) - Dependency Management
   - [SPARK](http://sparkjava.com/) Framework para desarrollar aplicaciones web
  
-# Autores
-  - José Luis Gómez Camacho - Estudiante de la Escuela Colombiana De Ingeniería Julio Garavito
-# Licencia
-Este proyecto está licenciado bajo la GNU v3.0 - ver el archivo LICENSE.md para más detalles
