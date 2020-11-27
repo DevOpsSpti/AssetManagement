@@ -1,10 +1,6 @@
 package edu.escuelaing.arem.ASE.app;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  * Clase encarga de hacer los c�lculos y crear la lista.
  *@author Jose Luis Gomez Camacho
@@ -22,20 +18,17 @@ public class Calculadora
 	/**
 	 * Constructor de la clase App encargada de crear la lista apartir de un archivo.
 	 */
-	public Calculadora (String nombre) throws IOException {
+	public Calculadora (String nombre) {
 		datos= new Lista();
-		BufferedReader archivo = null;
 		try {
-			archivo = new BufferedReader(new FileReader(nombre));
+			BufferedReader archivo = new BufferedReader(new FileReader(nombre));
 			String linea;
 			while ((linea = archivo.readLine())!= null){
 				datos.add(Float.parseFloat(linea));    
 			}
 			archivo.close();
 		} catch (Exception  e) {
-			Logger.getAnonymousLogger().log(Level.SEVERE, "an exception was thrown", e);
-		} finally {
-			archivo.close();
+			e.printStackTrace();
 		}
 	}
 	/**
