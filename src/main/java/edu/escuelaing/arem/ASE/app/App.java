@@ -1,5 +1,12 @@
 package edu.escuelaing.arem.ASE.app;
 
+import org.eclipse.jetty.util.log.Log;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
+
 public class App{
 	/**
 	 * @author Jose Luis Gomez Camacho
@@ -10,7 +17,7 @@ public class App{
 			System.out.println(calculos.mean());
 			System.out.println(calculos.stddev());
 		} catch (ListaException e) {
-			e.printStackTrace();
+			Logger.getAnonymousLogger().log(Level.SEVERE, "an exception was thrown", e);
 		}
 	}
 }
