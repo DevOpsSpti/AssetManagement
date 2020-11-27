@@ -24,7 +24,6 @@ public class Calculadora
 			BufferedReader archivo = new BufferedReader(new FileReader(nombre));
 			String linea;
 			while ((linea = archivo.readLine())!= null){
-				datos.add(Float.parseFloat(linea));    
 			}
 			archivo.close();
 		} catch (Exception  e) {
@@ -35,9 +34,7 @@ public class Calculadora
 	 * M�todo encargado de agregar un dato a la lista.
 	 * @param dato Numero que se quiere almacenar en la lista.
 	 */
-	public void addNumber(double dato) {
-		datos.add(dato);
-	}
+
 	/**
 	 * M�todo encargado de calcular el promedio de la lista creada.
 	 * @return El promedio calculado.
@@ -86,7 +83,7 @@ public class Calculadora
 		String[] jsonList = json.replace("\"", "").replace("]", "").replace("[", "").split(",");
 		for (int i = 0; i < jsonList.length; i++) {
 			double value = Double.parseDouble(jsonList[i]);
-			datos.add(value);
+
 		}
 		return datos;
 	}
