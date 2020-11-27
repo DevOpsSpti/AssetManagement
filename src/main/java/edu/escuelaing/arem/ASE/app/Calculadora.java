@@ -1,6 +1,9 @@
 package edu.escuelaing.arem.ASE.app;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * Clase encarga de hacer los c�lculos y crear la lista.
  *@author Jose Luis Gomez Camacho
@@ -27,7 +30,7 @@ public class Calculadora
 			}
 			archivo.close();
 		} catch (Exception  e) {
-			e.printStackTrace();
+			Logger.getAnonymousLogger().log(Level.SEVERE, "an exception was thrown", e);
 		}
 	}
 	/**
