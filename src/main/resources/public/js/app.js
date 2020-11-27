@@ -2,10 +2,6 @@ var app = (function () {
 
 	
 	var numeros = function (error, info){
-		if (error != null){
-			alert("Verificar datos");
-			return;	
-		}
 		$("#avg").text(info.media);
 		$("#stdv").text(info.desviacion);
 	}
